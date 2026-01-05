@@ -12,7 +12,7 @@ const MODEL_NAME = 'llama3.1:8b';
 
 async function fetchUserStory(issueKeyOrUrl: string) {
   const data = loadData();
-  const baseURL = 'https://opm.ooredoo.dz'; // Hardcoded from config or read from config if possible
+  const baseURL = data.jiraUrl || 'https://opm.ooredoo.dz';
   
   let issueUrl = issueKeyOrUrl;
   if (!issueKeyOrUrl.startsWith('http')) {

@@ -48,3 +48,10 @@ To see what's happening and debug selectors:
 ```bash
 npx playwright test --ui
 ```
+## Generating Tests from Jira Issues
+To create test sets from a Jira issue:
+```bash
+npm run generate_tests --issueKey XTP-123
+```
+
+
