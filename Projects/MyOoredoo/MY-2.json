@@ -1,0 +1,94 @@
+{
+  "tests": [
+    {
+      "summary": "Navigation to Plans tab",
+      "description": "Verify that the user can access the Plans section from the bottom navigation to view available bundles.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user is on the Home screen\nWhen the user taps on the Plans tab\nThen the Plans screen should be displayed\n  And bundle categories such as Local, Roaming, Monthly, Weekly, and Daily should be visible"
+    },
+    {
+      "summary": "Display purchasable bundles list",
+      "description": "Verify that all purchasable bundles appear with correct information and a Buy button, aligned with business rules.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user is on the Plans screen\nWhen the bundles list loads\nThen all purchasable bundles should be displayed with correct allowances, validity, and price\nAnd each bundle should display a Buy button"
+    },
+    {
+      "summary": "View bundle details",
+      "description": "Verify that tapping a bundle opens a detail view showing bundle allowances, validity, and price before proceeding to purchase.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user is viewing the bundles list\nWhen the user taps on a bundle\nThen a detail view should open displaying all allowances, validity period, and price\n  And a Buy action should be available"
+    },
+    {
+      "summary": "Successful purchase flow",
+      "description": "Verify that the purchase completes successfully when the user has enough balance, and the confirmation screen is shown.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user has sufficient credit\n  And the user opens the bundle detail view\nWhen the user confirms the purchase\nThen the purchase should be successful\n  And the user should see a confirmation screen with the purchased bundle details"
+    },
+    {
+      "summary": "Insufficient credit handling",
+      "description": "Verify that users with insufficient balance are prevented from purchasing and are shown an appropriate warning.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user has insufficient credit\n  And the user attempts to buy a bundle\nThen the system should block the purchase\n  And an insufficient credit message should be displayed\n  And the user should be prompted to recharge"
+    },
+    {
+      "summary": "Display active privilege bundle on Home",
+      "description": "Verify that the Home screen displays the user's active privilege bundle with remaining allowances and renewal information.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user is subscribed to an Ooredoo Family privilege bundle\nWhen the Home screen loads\nThen the privilege bundle should be displayed with remaining Internet, Minutes, and SMS\n  And the renewal information should be visible"
+    },
+    {
+      "summary": "Privilege bundle details in Usage section",
+      "description": "Verify that the Usage section shows full details of the active privilege bundle according to business rules.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user is on the Home screen\nWhen the user selects the option to view usage details\nThen the Usage section should display the active privilege bundle and its remaining allowances"
+    },
+    {
+      "summary": "Navigation back through bundle flows",
+      "description": "Verify that the user can navigate backward from Plans, bundle detail views, and usage screens without losing state.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user is navigating through Plans or Usage screens\nWhen the user taps the back button\nThen the user should return to the previous screen\n  And no data or selections should be lost"
+    },
+    {
+      "summary": "Privilege bundles are non-purchasable",
+      "description": "Verify that privilege bundles are displayed only for information and cannot be purchased, changed, or cancelled as per business rules.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [],
+      "linkedUserStories": ["MY-2"],
+      "linkedTestSets": ["MY-31"],
+      "cucumberScenario": "Given the user views their privilege bundle\nWhen privilege bundle information is displayed\nThen no Buy or modification option should be available\nAnd the privilege bundle should be treated as non-purchasable"
+    }
+  ]
+}

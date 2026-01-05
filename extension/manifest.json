@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Jira AI Test Generator",
+  "version": "0.1.0",
+  "description": "Generate test artifacts from Jira user stories using on-device AI.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Jira AI Test Generator"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "aiLanguageModelOriginTrial"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/browse/*",
+        "http://*/browse/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "jiraUrl": "https://opm.ooredoo.dz",
+  "projectKey": "XTP",
+  "credentials": {
+    "username": "LACHEHEBT",
+    "password": "TRKlchhb@123"
+  },
+  "tests": [
+    {
+      "summary": "Access History Page",
+      "description": "Verify that user accesses history page through bottom navigation bar icon",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [
+        "History"
+      ],
+      "linkedUserStories": [
+        "SNAPS-987"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Access History Page\n  Given I am on the home page\n  When I click on history icon in bottom navigation bar\n  Then I should see history page with storm history toggle"
+    },
+    {
+      "summary": "Switch to Storm History Feed",
+      "description": "Verify that user switches to storm history feed by clicking on toggle at top left part of the screen",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [
+        "History"
+      ],
+      "linkedUserStories": [
+        "SNAPS-987"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Switch to Storm History Feed\n  Given I am on history page\n  When I click on storm history toggle at top left part of the screen\n  Then I should see list of storm operations"
+    },
+    {
+      "summary": "View Storm Operations",
+      "description": "Verify that user can view storm operations as a list in history view",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [
+        "History"
+      ],
+      "linkedUserStories": [
+        "SNAPS-987"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: View Storm Operations\n  Given I am on storm history feed page\n  When I see list of storm operations\n  Then each operation card should contain client's msisdn, storm amount, and operation status"
+    },
+    {
+      "summary": "View Storm Details",
+      "description": "Verify that user can view storm details by clicking on storm operation card",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [
+        "History"
+      ],
+      "linkedUserStories": [
+        "SNAPS-987"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: View Storm Details\n  Given I am on storm history feed page\n  When I click on a storm operation card\n  Then I should see individual storm details including client's msisdn, storm amount, and operation status"
+    },
+    {
+      "summary": "Filter Storm Operations by MSISDN",
+      "description": "Verify that user can filter storm operations by MSISDN",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [
+        "History"
+      ],
+      "linkedUserStories": [
+        "SNAPS-987"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Filter Storm Operations by MSISDN\n  Given I am on storm history feed page\n  When I select a client's msisdn for filtering\n  Then only operations for that msisdn should be displayed"
+    },
+    {
+      "summary": "Filter Storm Operations by Date",
+      "description": "Verify that user can filter storm operations by date",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "components": [
+        "History"
+      ],
+      "linkedUserStories": [
+        "SNAPS-987"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Filter Storm Operations by Date\n  Given I am on storm history feed page\n  When I select a date for filtering\n  Then only operations performed within that date range should be displayed"
+    }
+  ],
+  "testSets": [],
+  "testPlans": [],
+  "testExecutions": []
+}
