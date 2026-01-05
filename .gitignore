@@ -1,0 +1,11 @@
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/dist/
+/tmp/
+.env
+.DS_Store
+thumbs.db
+data.json
