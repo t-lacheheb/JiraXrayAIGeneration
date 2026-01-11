@@ -24,12 +24,6 @@ test.describe('Create Xray Test Sets', () => {
       await createPage.fillSummary(setItem.summary);
       await createPage.fillDescription(setItem.description);
 
-      // Handle Linking User Stories
-      if (setItem.linkedUserStories && setItem.linkedUserStories.length > 0) {
-          await createPage.selectTab('Link Issues'); 
-          await createPage.linkUserStories(setItem.linkedUserStories);
-      }
-
       await createPage.submit();
 
       //catch the created test set id

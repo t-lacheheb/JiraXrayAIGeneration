@@ -30,8 +30,8 @@ export function loadConfig(): AppConfig {
       },
       ai: {
         provider: cfg.ai?.provider === 'openai' ? 'openai' : 'ollama',
-        baseUrl: cfg.ai?.baseUrl || 'http://localhost:11434',
-        model: cfg.ai?.model || 'llama3.1:8b'
+        baseUrl: cfg.ai?.provider === 'openai' ? cfg.ai?.baseUrl : 'http://localhost:11434',
+        model: cfg.ai?.provider === 'openai' ? cfg.ai?.model : 'llama3.1:8b'
       }
     }
   } catch {

@@ -73,8 +73,8 @@ export class CreateIssuePage {
   }
 
   async submit(isLastToCreate: boolean = true) {
-    if(isLastToCreate)
-      await this.page.uncheck('#qf-create-another'); 
+    //if(isLastToCreate)
+    //  await this.page.uncheck('#qf-create-another'); 
     await this.page.click('#create-issue-submit');
     // Wait for success flag or modal close
     await this.page.waitForSelector('.aui-message-success', { timeout: 10000 });

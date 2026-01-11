@@ -37,8 +37,20 @@ The output must be a single valid JSON object with one test set and an array of 
 **Rules:**
 1. **Type:** Prefer `"Cucumber"` for automated scenarios.
 2. **Cucumber Scenarios:** Must use standard Gherkin syntax (Given/When/Then). Use `\n` for line breaks in the JSON string.
+    - IMPORTANT: Ensure valid Gherkin syntax. Each line must start with a Gherkin keyword (Feature, Scenario, Given, When, Then, And, But).
+    - Do NOT use plain text lines without keywords, unless they are inside a DocString (delimited by `"""`).
+    - If you need to verify a specific long text or message, use a Gherkin DocString or inline it in the step definition.
+    - Example of DocString:
+      ```gherkin
+      Then I should see the message:  \"\"\"Switch to 5G and get 50GO of Internet...\"\"\"
+      ```
+    - Example of Inline:
+      `Then I should see the message "Switch to 5G..."`
 3. **Linked Issues:** If I provide a Jira User Story ID (e.g., XTP-123), include it in the `linkedUserStories` array for every test.
 4. **Response:** Return **ONLY** the valid JSON code block. Do not add conversational text before or after.
+5. **Read and Understand:** Carefully read the User Story and any provided Acceptance Criteria to fully understand the feature. Based on this understanding, generate suitable test cases that cover both typical usage and edge cases.
+6. **Number of Test Cases:** Generate a moderate number of test cases (typically 3-13 per story) focusing on the most critical positive and negative scenarios. Prioritize quality over quantity.
+
 
 ---
 

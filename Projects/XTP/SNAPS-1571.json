@@ -1,92 +1,84 @@
 {
   "tests": [
     {
-      "summary": "Display bonus eligibility message for 2G customer",
-      "description": "Verify that the system displays the correct bonus eligibility message for a 2G customer during identification.",
+      "summary": "Eligibility message display for 2G/3G MSISDN during customer identification",
+      "description": "Verify that the system displays a popup message to switch to 5G and grant the bonus for eligible 2G/3G customers",
       "type": "Cucumber",
-      "priority": "Medium",
+      "priority": "High",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Display bonus eligibility for a 2G customer\n  Given I am a 2G customer\n  When I am identified in the system\n  Then I should see the message: \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user enters a valid 2G/3G MSISDN for bonus eligibility\nThen a popup message should be displayed with the following text: \"Switch to 50G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
     },
     {
-      "summary": "Display bonus eligibility message for 3G customer",
-      "description": "Verify that the system displays the correct bonus eligibility message for a 3G customer during identification.",
+      "summary": "Eligibility message display for 4G MSISDN during customer identification",
+      "description": "Verify that the system displays a popup message to switch to 5G and grant the bonus for eligible 4G customers",
       "type": "Cucumber",
-      "priority": "Medium",
+      "priority": "High",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Display bonus eligibility for a 3G customer\n  Given I am a 3G customer\n  When I am identified in the system\n  Then I should see the message: \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user enters a valid 4G MSISDN for bonus eligibility\nThen a popup message should be displayed with the following text:  \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
     },
     {
-      "summary": "Display bonus eligibility message for 4G customer",
-      "description": "Verify that the system displays the correct bonus eligibility message for a 4G customer during identification.",
+      "summary": "Confirmation message display after successful operation to 5G",
+      "description": "Verify that the system displays a confirmation message with the correct bonus details after a successful switch to 5G",
       "type": "Cucumber",
-      "priority": "Medium",
+      "priority": "High",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Display bonus eligibility for a 4G customer\n  Given I am a 4G customer\n  When I am identified in the system\n  Then I should see the message: \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user successfully switches from 2G/3G to 5G\nThen a confirmation message should be displayed with the following text: \"Swap 2G/ 3G→5G Regularization completed successfully. The customer has received the 5G bonus: 50GB + unlimited calls + 300 minutes.\""
     },
     {
-      "summary": "Grant 5G bonus after successful swap for 2G customer",
-      "description": "Verify that the 5G bonus is automatically granted after a successful USIM swap for a 2G customer.",
+      "summary": "Confirmation message display after successful operation to 5G for 4G customers",
+      "description": "Verify that the system displays a confirmation message with the correct bonus details after a successful switch to 5G for 4G customers",
       "type": "Cucumber",
-      "priority": "Medium",
+      "priority": "High",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Grant 5G bonus after successful swap for 2G customer\n  Given I am a 2G customer\n  And I have successfully swapped to 5G\n  Then I should see the message: \"Swap 2G/3G→5G Regularization completed successfully. The customer has received the 5G bonus: 50GB + unlimited calls + 300 minutes.\""
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user successfully switches from 4G to 5G\nThen a confirmation message should be displayed with the following text:  \"Swap 4G→5G Regularization completed successfully. The customer has received the 5G bonus: 5GB + unlimited calls + 300 minutes.\""
     },
     {
-      "summary": "Grant 5G bonus after successful swap for 4G customer",
-      "description": "Verify that the 5G bonus is automatically granted after a successful USIM swap for a 4G customer.",
+      "summary": "Bonus grant after successful operation to 5G",
+      "description": "Verify that the system automatically grants the 5G bonus once the SIM status changes to 5G",
       "type": "Cucumber",
-      "priority": "Medium",
+      "priority": "High",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Grant 5G bonus after successful swap for 4G customer\n  Given I am a 4G customer\n  And I have successfully swapped to 5G\n  Then I should see the message: \"Swap 4G→5G Regularization completed successfully. The customer has received the 5G bonus: 50GB + unlimited calls + 300 minutes.\""
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user successfully switches from 2G/3G or 4G to 5G\nThen the system should automatically grant the 5G bonus"
     },
     {
-      "summary": "Display 5G bonus popup when accessing Regul section directly",
-      "description": "Verify that the 5G bonus popup is displayed when the user accesses the Regul section directly.",
+      "summary": "No popup message display when accessing Regul section directly",
+      "description": "Verify that no popup message is displayed when a user accesses the Regul section directly",
       "type": "Cucumber",
       "priority": "Medium",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Display 5G bonus popup directly in Regul section\n  Given I access the Regul section directly\n  Then I should see the 5G bonus popup"
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user comes directly to the Regul section\nThen no popup message should be displayed"
     },
     {
-      "summary": "Do not display 5G bonus popup coming from Bundle purchase",
-      "description": "Verify that the 5G bonus popup is not displayed if the user comes from Bundle purchase.",
+      "summary": "Popup message display when accessing Regul section via Switch to 5G button",
+      "description": "Verify that a popup message is displayed when a user accesses the Regul section via the Switch to 5G button",
       "type": "Cucumber",
       "priority": "Medium",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Do not display 5G bonus popup coming from Bundle purchase\n  Given I have come from Bundle purchase\n  When I access the Regul section\n  Then I should not see the 5G bonus popup"
+      "cucumberScenario": "Given the user is on the Regul section\nWhen the user comes from Bundle purchase or Storm via the Switch to 5G button\nThen a popup message should be displayed with the following text: \"Switch to 50G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
     },
     {
-      "summary": "Do not display 5G bonus popup coming from Storm switch",
-      "description": "Verify that the 5G bonus popup is not displayed if the user comes from Storm via the Switch to 5G button.",
+      "summary": "SIM swap required before switching to 5G",
+      "description": "Verify that a user needs to swap their SIM to a USIM first in order to switch to 5G",
       "type": "Cucumber",
-      "priority": "Medium",
+      "priority": "Low",
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Do not display 5G bonus popup coming from Storm\n  Given I have come from Storm via the Switch to 5G button\n  When I access the Regul section\n  Then I should not see the 5G bonus popup"
+      "cucumberScenario": "Given the user has a Plugin SIM\nWhen the user tries to switch directly to 5G without swapping it to a USIM\nThen an error message should be displayed indicating that a USIM swap is required before switching to 5G"
     }
   ],
   "testSets": [
@@ -96,7 +88,7 @@
       "linkedUserStories": [
         "SNAPS-1571"
       ],
-      "id": "XTP-1001"
+      "id": "XTP-1034"
     }
   ],
   "projectKey": "XTP",
