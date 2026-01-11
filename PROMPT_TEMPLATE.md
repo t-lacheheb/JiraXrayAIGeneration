@@ -28,7 +28,7 @@ The output must be a single valid JSON object with one test set and an array of 
       "priority": "Medium", 
       "linkedUserStories": ["XTP-1504"],
       "linkedTestSets": [],
-      "cucumberScenario": "Given context\n  And ...\nWhen action\n  And ...\nThen result\n  And ..."
+      "cucumberScenario": "Given The user\n  And ...\nWhen action\n  And ...\nThen result\n  And ..."
     }
   ]
 }
@@ -70,7 +70,7 @@ description: XTP-1504 - As a customer, I want to search for products so I can fi
       "priority": "High",
       "linkedUserStories": ["XTP-1504"],
       "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Search for valid product\n  Given I am on the home page\n  When I enter \"iPhone\" in the search bar\n  And I click search\n  Then I should see a list of iPhone products"
+      "cucumberScenario": "Given the user is on the home page\nWhen the user enters \"iPhone\" in the search bar\n  And the user clicks search\nThen the user should see a list of iPhone products"
     },
     {
       "summary": "Search for invalid product",
@@ -79,7 +79,7 @@ description: XTP-1504 - As a customer, I want to search for products so I can fi
       "priority": "Medium",
       "linkedUserStories": ["XTP-1504"],
       "linkedTestSets": [],
-      "cucumberScenario": "Scenario: Search for invalid product\n  Given I am on the home page\n  When I enter \"xyz123\" in the search bar\n  And I click search\n  Then I should see \"No results found\" message"
+      "cucumberScenario": "Given the user is on the home page\nWhen the user enters \"xyz123\" in the search bar\n  And the user click search\nThen the user should see \"No results found\" message"
     }
   ]
 }
