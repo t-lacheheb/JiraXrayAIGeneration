@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import { loadConfig } from './config_helper';
+
+const cfg = loadConfig();
 
 export default defineConfig({
   testDir: './tests',
@@ -8,13 +11,13 @@ export default defineConfig({
   workers: 1,
   reporter: 'html',
   use: {
-    baseURL: 'https://opm.ooredoo.dz',
+    baseURL: cfg.jira.baseUrl,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
   projects: [
     {
-      name: 'My Ooredoo',
+      name: 'Snap Sim', //My Ooredoo
       use: { ...devices['Desktop Chrome'] },
     },
   ],

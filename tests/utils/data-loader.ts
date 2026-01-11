@@ -1,14 +1,29 @@
-import fs from 'fs';
-import path from 'path';
 
-export const loadData = () => {
-  const dataPath = path.join(process.cwd(), 'data.json');
+
+
+
+import fs from 'fs';
+import { loadConfig } from '../../config_helper';
+
+export const loadData = (dataPath: string) => {
+
   const rawData = fs.readFileSync(dataPath, 'utf-8');
-  // Remove single-line comments that appear at the start of the line (e.g. commented out blocks)
-  // This avoids stripping URLs like https://...
+  
   const jsonWithoutComments = rawData
-    .replace(/^\s*\/\/.*$/gm, '') 
+    .replace(/^\s*\/\/.*$/gm, '')
     .replace(/\/\*[\s\S]*?\*\//g, '');
-    
-  return JSON.parse(jsonWithoutComments);
+  const parsed = JSON.parse(jsonWithoutComments);
+  const cfg = loadConfig();
+  const envUsername = process.env.JIRA_USERNAME;
+  const envPassword = process.env.JIRA_PASSWORD;
+  const credentials = {
+    username: envUsername || '',
+    password: envPassword || ''
+  };
+  return {
+    ...parsed,
+    jiraUrl: cfg.jira.baseUrl,
+    projectKey: cfg.jira.projectKeyDefault,
+    credentials
+  };
 };

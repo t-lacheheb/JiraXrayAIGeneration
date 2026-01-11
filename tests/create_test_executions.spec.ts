@@ -3,7 +3,7 @@ import { LoginPage } from './pages/LoginPage';
 import { CreateIssuePage } from './pages/CreateIssuePage';
 import { loadData } from './utils/data-loader';
 
-const data = loadData();
+const data = loadData(process.env.dataPath || '../data.json');
 
 test.describe('Create Xray Test Executions', () => {
   test.beforeEach(async ({ page }) => {

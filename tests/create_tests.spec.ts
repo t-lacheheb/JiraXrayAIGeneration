@@ -4,7 +4,7 @@ import { CreateIssuePage } from './pages/CreateIssuePage';
 import { TestDetailsPage } from './pages/TestDetailsPage';
 import { loadData } from './utils/data-loader';
 
-const data = loadData();
+const data = loadData(process.env.dataPath || '../data.json');
 
 test.describe.serial('Create Xray Tests', () => {
   let page: Page;
@@ -62,10 +62,20 @@ test.describe.serial('Create Xray Tests', () => {
         await createPage.setCucumberScenario(testItem.cucumberScenario);
       }
 
+      
       // Handle Linking Test Sets
+      let testSetIdsToLink: string[] = [];
       if (testItem.linkedTestSets && testItem.linkedTestSets.length > 0) {
-          await createPage.selectTab('Test Sets'); 
-          await createPage.linkTestSets(testItem.linkedTestSets);
+        testSetIdsToLink = testItem.linkedTestSets;
+      } else if (data.testSets && data.testSets.length > 0) {
+        testSetIdsToLink = data.testSets
+            .filter((ts: any) => ts.id)
+            .map((ts: any) => ts.id);
+      }
+
+      if (testSetIdsToLink.length > 0) {
+        await createPage.selectTab('Test Sets');
+        await createPage.linkTestSets(testSetIdsToLink);
       }
 
       // Handle Linking User Stories

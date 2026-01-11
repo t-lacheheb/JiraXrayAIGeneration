@@ -2,8 +2,9 @@ import { test } from '@playwright/test';
 import { LoginPage } from './pages/LoginPage';
 import { CreateIssuePage } from './pages/CreateIssuePage';
 import { loadData } from './utils/data-loader';
+import fs from 'fs';
 
-const data = loadData();
+const data = loadData(process.env.dataPath || '../data.json');
 
 test.describe('Create Xray Test Sets', () => {
   test.beforeEach(async ({ page }) => {
@@ -23,12 +24,22 @@ test.describe('Create Xray Test Sets', () => {
       await createPage.fillSummary(setItem.summary);
       await createPage.fillDescription(setItem.description);
 
+      // Handle Linking User Stories
+      if (setItem.linkedUserStories && setItem.linkedUserStories.length > 0) {
+          await createPage.selectTab('Link Issues'); 
+          await createPage.linkUserStories(setItem.linkedUserStories);
+      }
+
       await createPage.submit();
+
+      //catch the created test set id
+      const testSetId = await createPage.getCreatedIssueId();
       
-      // TODO: Add tests to the set
-      // This usually involves navigating to the created Test Set
-      // Clicking "Add Tests"
-      // Searching and selecting tests
+      // return the test set id
+      setItem.id = testSetId;
+      // save the data file
+      fs.writeFileSync(process.env.dataPath || '', JSON.stringify(data, null, 2));
+      
     });
   }
 });

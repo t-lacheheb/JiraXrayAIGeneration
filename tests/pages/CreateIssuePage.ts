@@ -1,6 +1,7 @@
 import { Page, expect } from '@playwright/test';
 
 export class CreateIssuePage {
+  
   readonly page: Page;
 
   constructor(page: Page) {
@@ -170,5 +171,18 @@ export class CreateIssuePage {
          console.warn(`Could not find Linked Issues field. Check selector.`);
      }
      
+  }
+
+  async getCreatedIssueId() : Promise<string> {
+    // Assuming the issue key is displayed after creation the message : IssueXTP-983 - Summary has been successfully created.
+    //catch the id using regex  : XTP-983
+    const issueKeySelector = '.aui-message-success a'; // Adjust if needed
+    const issueKey = await this.page.textContent(issueKeySelector);
+
+    const issueIdRegex = /\b[A-Z]+-\d+\b/;
+    const issueId = issueKey?.match(issueIdRegex)?.[0];
+    if(!issueId)
+      return '';  
+    return issueId || '';
   }
 }

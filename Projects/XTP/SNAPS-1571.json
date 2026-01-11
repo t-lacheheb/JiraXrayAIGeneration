@@ -1,0 +1,108 @@
+{
+  "tests": [
+    {
+      "summary": "Display bonus eligibility message for 2G customer",
+      "description": "Verify that the system displays the correct bonus eligibility message for a 2G customer during identification.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Display bonus eligibility for a 2G customer\n  Given I am a 2G customer\n  When I am identified in the system\n  Then I should see the message: \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
+    },
+    {
+      "summary": "Display bonus eligibility message for 3G customer",
+      "description": "Verify that the system displays the correct bonus eligibility message for a 3G customer during identification.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Display bonus eligibility for a 3G customer\n  Given I am a 3G customer\n  When I am identified in the system\n  Then I should see the message: \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
+    },
+    {
+      "summary": "Display bonus eligibility message for 4G customer",
+      "description": "Verify that the system displays the correct bonus eligibility message for a 4G customer during identification.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Display bonus eligibility for a 4G customer\n  Given I am a 4G customer\n  When I am identified in the system\n  Then I should see the message: \"Switch to 5G and get 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days! Valid for one month\""
+    },
+    {
+      "summary": "Grant 5G bonus after successful swap for 2G customer",
+      "description": "Verify that the 5G bonus is automatically granted after a successful USIM swap for a 2G customer.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Grant 5G bonus after successful swap for 2G customer\n  Given I am a 2G customer\n  And I have successfully swapped to 5G\n  Then I should see the message: \"Swap 2G/3G→5G Regularization completed successfully. The customer has received the 5G bonus: 50GB + unlimited calls + 300 minutes.\""
+    },
+    {
+      "summary": "Grant 5G bonus after successful swap for 4G customer",
+      "description": "Verify that the 5G bonus is automatically granted after a successful USIM swap for a 4G customer.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Grant 5G bonus after successful swap for 4G customer\n  Given I am a 4G customer\n  And I have successfully swapped to 5G\n  Then I should see the message: \"Swap 4G→5G Regularization completed successfully. The customer has received the 5G bonus: 50GB + unlimited calls + 300 minutes.\""
+    },
+    {
+      "summary": "Display 5G bonus popup when accessing Regul section directly",
+      "description": "Verify that the 5G bonus popup is displayed when the user accesses the Regul section directly.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Display 5G bonus popup directly in Regul section\n  Given I access the Regul section directly\n  Then I should see the 5G bonus popup"
+    },
+    {
+      "summary": "Do not display 5G bonus popup coming from Bundle purchase",
+      "description": "Verify that the 5G bonus popup is not displayed if the user comes from Bundle purchase.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Do not display 5G bonus popup coming from Bundle purchase\n  Given I have come from Bundle purchase\n  When I access the Regul section\n  Then I should not see the 5G bonus popup"
+    },
+    {
+      "summary": "Do not display 5G bonus popup coming from Storm switch",
+      "description": "Verify that the 5G bonus popup is not displayed if the user comes from Storm via the Switch to 5G button.",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Scenario: Do not display 5G bonus popup coming from Storm\n  Given I have come from Storm via the Switch to 5G button\n  When I access the Regul section\n  Then I should not see the 5G bonus popup"
+    }
+  ],
+  "testSets": [
+    {
+      "summary": "Test Set for SNAPS-1571",
+      "description": "Auto-generated test set for User Story SNAPS-1571",
+      "linkedUserStories": [
+        "SNAPS-1571"
+      ],
+      "id": "XTP-1001"
+    }
+  ],
+  "projectKey": "XTP",
+  "jiraUrl": "https://opm.ooredoo.dz",
+  "credentials": {
+    "username": "LACHEHEBT",
+    "password": "TRKlchhb@123"
+  }
+}
