@@ -1,5 +1,5 @@
 {
-  "name": "jira-xray-automation",
+  "name": "jira-xray-ai-automation",
   "version": "1.0.0",
   "description": "Playwright automation for Jira Xray",
   "main": "index.js",
