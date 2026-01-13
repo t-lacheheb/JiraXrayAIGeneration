@@ -24,7 +24,7 @@ export function loadConfig(): AppConfig {
     const cfg = JSON.parse(raw)
     return {
       jira: {
-        baseUrl: cfg.jira?.baseUrl || 'https://opm.ooredoo.dz',
+        baseUrl: cfg.jira?.baseUrl || 'https://example.company.dz',
         projectKeyDefault: cfg.jira?.projectKeyDefault || 'XTP',
         credentials: cfg.jira?.credentials
       },
@@ -36,7 +36,7 @@ export function loadConfig(): AppConfig {
     }
   } catch {
     return {
-      jira: { baseUrl: 'https://opm.ooredoo.dz', projectKeyDefault: 'XTP' },
+      jira: { baseUrl: 'https://example.company.dz', projectKeyDefault: 'XTP' },
       ai: { provider: 'ollama', baseUrl: 'http://localhost:11434', model: 'llama3.1:8b' }
     }
   }

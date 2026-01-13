@@ -17,7 +17,7 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'Snap Sim', //My Ooredoo
+      name: 'Project Name', //My Project Name
       use: { ...devices['Desktop Chrome'] },
     },
   ],
