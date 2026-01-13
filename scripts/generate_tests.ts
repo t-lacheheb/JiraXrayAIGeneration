@@ -4,7 +4,6 @@ dotenv.config({ override: true });
 import { chromium } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
-import { loadData } from '../tests/utils/data-loader';
 import { exec } from 'child_process';
 import util from 'util';
 import { loadConfig } from '../config_helper';
@@ -235,23 +234,9 @@ async function main() {
 
         const dataPath = path.join(projectDir, `${story.id}.json`);
         
-        // Initialize or load existing
-        let currentData: any = { tests: [], testSets: [] };
-        if (fs.existsSync(dataPath)) {
-             try {
-                currentData = loadData(dataPath);
-             } catch (e) {
-                // if corrupt, start fresh
-             }
-        }
-
         console.log(`Generated ${generatedTests.length} tests and ${generatedTestSets.length} test sets.`);
-        
-        currentData.tests = generatedTests;
-        currentData.testSets = generatedTestSets;
-        currentData.projectKey = projectKey;
-        
-        fs.writeFileSync(dataPath, JSON.stringify(currentData, null, 2));
+        const filePayload = { tests: generatedTests, testSets: generatedTestSets };
+        fs.writeFileSync(dataPath, JSON.stringify(filePayload, null, 2));
         console.log(`Saved test data to: ${dataPath}`);
         
         if (mode === 'FILE') {
@@ -298,10 +283,10 @@ async function main() {
       console.log(`\n=== Step 2: Creating Jira Issues from ${dataPath} ===`);
       
       console.log('Running Playwright test sets to create issues in Jira...');
-      await runPlaywrightTest('test_sets', dataPath);
+      await runPlaywrightTest('test_sets', dataPath, projectKey);
 
       console.log('Running Playwright tests to create issues in Jira...');
-      await runPlaywrightTest('tests', dataPath);
+      await runPlaywrightTest('tests', dataPath, projectKey);
 
     } catch (error) {
       console.error('Error during execution:', error);
@@ -311,9 +296,9 @@ async function main() {
 }
 
 main();
-async function runPlaywrightTest(issueType: string, dataPath: string) {
+async function runPlaywrightTest(issueType: string, dataPath: string, projectKey: string) {
   try {
-    const { stdout, stderr } = await execPromise(`npx playwright test tests/create_${issueType}.spec.ts`, { env: { ...process.env, dataPath } });
+    const { stdout, stderr } = await execPromise(`npx playwright test tests/create_${issueType}.spec.ts`, { env: { ...process.env, dataPath, projectKey } });
     console.log(`Playwright Output for ${issueType}:\n`, stdout);
     if (stderr) console.error(`Playwright Errors for ${issueType}:\n`, stderr);
   } catch (testError: any) {
@@ -322,4 +307,3 @@ async function runPlaywrightTest(issueType: string, dataPath: string) {
      if (testError.stderr) console.error(testError.stderr);
   }
 }
-

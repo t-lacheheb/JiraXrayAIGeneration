@@ -1,6 +1,6 @@
 {
   "jira": {
-    "baseUrl": "https://example.company.dz",
+    "baseUrl": "https://opm.ooredoo.dz",
     "projectKeyDefault": "XTP"
   },
   "ai": {

@@ -1,0 +1,80 @@
+{
+  "tests": [
+    {
+      "summary": "Bundle Purchase Eligibility Check",
+      "description": "Verify that the system checks customer status during bundle purchase and displays the 5G bonus offer accordingly",
+      "type": "Cucumber",
+      "priority": "High",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Given a valid MSISDN for a 2G or 3G customer\nWhen a bundle purchase is initiated\nThen the system should display a popup with the 5G bonus offer\n  And the offer should be for 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days"
+    },
+    {
+      "summary": "Storm Operation Eligibility Check",
+      "description": "Verify that the system checks customer status during Storm operation and displays the 5G bonus offer accordingly",
+      "type": "Cucumber",
+      "priority": "High",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Given a valid MSISDN for a 2G or 3G customer\nWhen a Storm operation is initiated\nThen the system should display a popup with the 5G bonus offer\n  And the offer should be for 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days"
+    },
+    {
+      "summary": "4G Customer Eligibility Check",
+      "description": "Verify that the system checks customer status during bundle purchase or Storm operation and displays the 5G bonus offer accordingly for a 4G customer",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Given a valid MSISDN for a 4G customer\nWhen a bundle purchase or Storm operation is initiated\nThen the system should display a popup with the 5G bonus offer\n  And the offer should be for 5GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days"
+    },
+    {
+      "summary": "Direct Partner Eligibility Check",
+      "description": "Verify that the system checks customer status during bundle purchase or Storm operation and displays the 5G bonus offer accordingly for a Direct partner",
+      "type": "Cucumber",
+      "priority": "Medium",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Given a valid MSISDN for a Direct partner\nWhen a bundle purchase or Storm operation is initiated\nThen the system should display a popup with the 5G bonus offer\n  And the offer should be for 50GO of Internet + unlimited calls to Ooredoo + 300 minutes to other networks for 30 days"
+    },
+    {
+      "summary": "Switch to 5G Button Redirection",
+      "description": "Verify that the system redirects the user to the Regul (5G) section when clicking on the 'Switch to 5G' button",
+      "type": "Cucumber",
+      "priority": "Low",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Given a valid MSISDN for a customer\nWhen the user clicks on the 'Switch to 5G' button\nThen the system should redirect the user to the Regul (5G) section"
+    },
+    {
+      "summary": "Regul Section Access",
+      "description": "Verify that the system displays the 5G bonus offer popup when accessing the Regul section directly",
+      "type": "Cucumber",
+      "priority": "Low",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "linkedTestSets": [],
+      "cucumberScenario": "Given a valid MSISDN for a customer\nWhen the user accesses the Regul (5G) section directly\nThen the system should display a popup with the 5G bonus offer"
+    }
+  ],
+  "testSets": [
+    {
+      "summary": "Test Set for SNAPS-1570",
+      "description": "Auto-generated test set for User Story SNAPS-1570",
+      "linkedUserStories": [
+        "SNAPS-1570"
+      ],
+      "id": "XTP-1043"
+    }
+  ]
+}

@@ -4,21 +4,21 @@ import { CreateIssuePage } from './pages/CreateIssuePage';
 import { loadData } from './utils/data-loader';
 import fs from 'fs';
 
-const data = loadData(process.env.dataPath || '../data.json');
+const data = loadData(process.env.dataPath || '');
 
 test.describe('Create Xray Test Sets', () => {
   test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
-    await loginPage.login(data.credentials.username, data.credentials.password);
+    await loginPage.login(process.env.JIRA_USERNAME || '', process.env.JIRA_PASSWORD || '');
   });
 
-  for (const setItem of data.testSets) {
+  for (const setItem of data.testSets || []) {
     test(`Create Test Set: ${setItem.summary}`, async ({ page }) => {
       const createPage = new CreateIssuePage(page);
       
       await createPage.openCreateModal();
-      await createPage.selectProject(data.projectKey);
+      await createPage.selectProject(process.env.projectKey || '');
       await createPage.selectIssueType('Test Set'); 
       
       await createPage.fillSummary(setItem.summary);

@@ -3,21 +3,21 @@ import { LoginPage } from './pages/LoginPage';
 import { CreateIssuePage } from './pages/CreateIssuePage';
 import { loadData } from './utils/data-loader';
 
-const data = loadData(process.env.dataPath || '../data.json');
+const data = loadData(process.env.dataPath || '');
 
 test.describe('Create Xray Test Executions', () => {
   test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
-    await loginPage.login(data.credentials.username, data.credentials.password);
+    await loginPage.login(process.env.JIRA_USERNAME || '', process.env.JIRA_PASSWORD || '');
   });
 
-  for (const execItem of data.testExecutions) {
+  for (const execItem of (data as any).testExecutions || []) {
     test(`Create Execution: ${execItem.summary}`, async ({ page }) => {
       const createPage = new CreateIssuePage(page);
       
       await createPage.openCreateModal();
-      await createPage.selectProject(data.projectKey);
+      await createPage.selectProject(process.env.projectKey || '');
       await createPage.selectIssueType('Test Execution'); 
       
       await createPage.fillSummary(execItem.summary);

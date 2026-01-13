@@ -25,7 +25,7 @@ npm install
 npx playwright install
 ```
 
-Create `.env`:
+Create `.env` (only credentials, no Jira URLs or project keys):
 ```env
 JIRA_USERNAME=your_email@example.com
 JIRA_PASSWORD=your_api_token_or_password
@@ -34,7 +34,7 @@ OPENAI_API_KEY=sk-...
 
 Configure [config.json](file:///Users/tarek/WorkSpace/playwright/config.json):
 - jira.baseUrl, jira.projectKeyDefault
-- ai.provider (ollama|openai), ai.baseUrl, ai.model
+- ai.provider (`ollama` or `openai`), ai.baseUrl, ai.model
 
 ## CLI: Three Modes
 
@@ -129,7 +129,7 @@ AI returns a single JSON object containing a Test Set and Tests:
       "linkedUserStories": ["SNAPS-1571"],
       "linkedTestSets": [],
       "cucumberScenario": "Given the user is on the home page\nWhen the user enters a valid 2G/3G MSISDN\nThen I should see the message:\n\"\"\"\nSwitch to 5G and get 50GO of Internet...\n\"\"\""
-    }
+    },
   ]
 }
 ```

@@ -30,11 +30,5 @@
       ],
       "id": "XTP-1034"
     }
-  ],
-  "projectKey": "XTP",
-  "jiraUrl": "https://example.company.dz",
-  "credentials": {
-    "username": "USR",
-    "password": "PWD"
-  }
+  ]
 }

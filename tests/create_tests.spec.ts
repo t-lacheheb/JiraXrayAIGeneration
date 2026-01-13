@@ -1,10 +1,9 @@
 import { test, Page } from '@playwright/test';
 import { LoginPage } from './pages/LoginPage';
 import { CreateIssuePage } from './pages/CreateIssuePage';
-import { TestDetailsPage } from './pages/TestDetailsPage';
 import { loadData } from './utils/data-loader';
 
-const data = loadData(process.env.dataPath || '../data.json');
+const data = loadData(process.env.dataPath || '');
 
 test.describe.serial('Create Xray Tests', () => {
   let page: Page;
@@ -13,17 +12,17 @@ test.describe.serial('Create Xray Tests', () => {
     page = await browser.newPage();
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
-    await loginPage.login(data.credentials.username, data.credentials.password);
+    await loginPage.login(process.env.JIRA_USERNAME || '', process.env.JIRA_PASSWORD || '');
   });
 
   test.afterAll(async () => {
     await page.close();
   });
 
-  const testsCount = data.tests.length;
+  const testsCount = data.tests?.length || 0;
   let counter = 0;
 
-  for (const testItem of data.tests) {
+  for (const testItem of data.tests || []) {
     // We increment counter inside the loop definition phase
     // Note: We need to capture the current value for the test closure
     const currentTestIndex = ++counter; 
@@ -37,7 +36,7 @@ test.describe.serial('Create Xray Tests', () => {
       }
 
       // ... rest of logic ...
-      await createPage.selectProject(data.projectKey);
+      await createPage.selectProject(process.env.projectKey || '');
       await createPage.selectIssueType('Test'); 
       
       await createPage.fillSummary(testItem.summary);
